@@ -9,6 +9,8 @@ import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Todos from "./pages/Todos.jsx";
 import Users from "./pages/Users.jsx";
+import { ToastContainer } from 'react-toastify';
+
 
 function App() {
     return (
@@ -23,6 +25,18 @@ function App() {
                         <Route path="/users" element={<Users />} />
                     </Routes>
                 </div>
+                {/* // toastity */}
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </div>
         </BrowserRouter>
     );
