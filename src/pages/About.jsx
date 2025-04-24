@@ -1,10 +1,85 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addJob, deleteJob } from "../redux/actions";
 
 const About = () => {
+    const [title, setTitle] = useState("");
+    const [salary, setSalary] = useState("");
+    const [showList, setShowList] = useState(false);
+
+    const dispatch = useDispatch();
+    const jobList = useSelector((state) => state.job.jobs);
+
+
+    const handleSubmit = useCallback(() => {
+        if (!title || !salary) {
+            alert("vui long nhap du thong tin");
+            return;
+        }
+
+        const newJob = {
+            id: Date.now(),
+            title,
+            salary,
+        };
+
+        dispatch(addJob(newJob));
+        setTitle("");
+        setSalary("");
+    }, [title, salary, dispatch])
+
+    const handleDelete = (jobId) => {
+        dispatch(deleteJob(jobId));
+    }
+
     return (
-        <div> 
-            <p>This is About page</p>
-        </div>
+        <>
+            <div style={{ marginBottom: "15px",marginTop: "25px"  }}>
+                <input
+                    type="text"
+                    placeholder="Nhập chức danh"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    style={{ marginRight: "10px" }}
+                />
+                <input
+                    type="number"
+                    placeholder="Nhập lương"
+                    value={salary}
+                    onChange={(e) => setSalary(e.target.value)}
+                />
+                <button onClick={handleSubmit} style={{ marginLeft: "10px" }}>
+                    Submit
+                </button>
+            </div>
+            <div style={{ marginBottom: "10px" }}>
+                {jobList.length > 0 ? (
+                    showList ? (
+                        <button onClick={() => setShowList(false)}>Hide List</button>
+                    ) : (
+                        <button onClick={() => setShowList(true)}>Show List</button>
+                    )
+                ) : (
+                    <p>No jobs available</p>
+                )}
+            </div>
+            {showList && (
+                <ul style={{ listStyleType: "none", padding: 0 }}>
+                    {jobList.map((job) => (
+                        <li key={job.id}>
+                            <strong>{job.title}</strong> {job.salary} USD
+                            <button
+                                onClick={() => handleDelete(job.id)}
+                                style={{ marginLeft: "10px", color: "red" }}
+                            >
+                                Delete
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </>
+
     )
 }
 
