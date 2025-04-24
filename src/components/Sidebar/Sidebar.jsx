@@ -3,13 +3,15 @@ import { NavLink } from "react-router-dom";
 import "./Sidebar.scss";
 import { ThemeContext } from "../../ConText/ThemeContext";
 
+
 const Sidebar = () => {
-    const {toggleTheme} = useContext(ThemeContext);
+    const {theme, toggleTheme } = useContext(ThemeContext);
     return (
         <>
             <div className="sidebar">
-                <div className="theme-toggle" onClick={toggleTheme} title="Toggle theme">
-                    💡
+               
+                <div className="theme-toggle" onClick={toggleTheme} title="Toggle Theme">
+                    {theme === "light" ? "💡" : "🌙"}
                 </div>
                 <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>
                 <NavLink to="/todos" className={({ isActive }) => isActive ? "active" : ""}>Todos</NavLink>
