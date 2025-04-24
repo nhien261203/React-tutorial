@@ -1,4 +1,4 @@
-import { ADD_JOB, DELETE_JOB } from "./actions";
+import { ADD_JOB, DELETE_JOB } from "../actions";
 
 const initialState = {
     jobs: [

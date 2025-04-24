@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from "redux";
-import { userReducer } from "./userReducer";
-import { jobReducer } from "./jobReducer";
+import { userReducer } from "./reducers/userReducer";
+import { jobReducer } from "./reducers/jobReducer";
 
 const rootReducer = combineReducers({
     user: userReducer,

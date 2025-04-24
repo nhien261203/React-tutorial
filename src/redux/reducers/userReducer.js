@@ -17,7 +17,7 @@
 //   }
 // };
 
-import { ADD_USER, DELETE_USER } from "./actions";
+import { ADD_USER, DELETE_USER } from "../actions";
 
 const initialState = {
   users: [
