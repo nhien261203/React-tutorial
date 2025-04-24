@@ -10,13 +10,16 @@ import About from "./pages/About.jsx";
 import Todos from "./pages/Todos.jsx";
 import Users from "./pages/Users.jsx";
 import { ToastContainer } from 'react-toastify';
-
+import { ThemeContext } from './ConText/ThemeContext.jsx'
+import { useContext } from "react";
 
 function App() {
+    const { theme, toggleTheme } = useContext(ThemeContext);
     return (
         <BrowserRouter>
-            <div className="app-container">
-                <Sidebar /> {/* Đúng là Sidebar, không phải Nav */}
+            <div className={`app-container ${theme}`}>
+                <Sidebar /> 
+                
                 <div className="main-content">
                     <Routes>
                         <Route path="/" element={<Home />} />
