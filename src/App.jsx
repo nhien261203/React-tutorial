@@ -8,7 +8,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Todos from "./pages/Todos.jsx";
-import Users from "./pages/Users.jsx";
+import Users from "./pages/Users/Users.jsx";
+import DetailUser from './pages/Users/DetailUser.jsx';
+
 import { ToastContainer } from 'react-toastify';
 import { ThemeContext } from './ConText/ThemeContext.jsx'
 import { useContext } from "react";
@@ -18,14 +20,15 @@ function App() {
     return (
         <BrowserRouter>
             <div className={`app-container ${theme}`}>
-                <Sidebar /> 
-                
+                <Sidebar />
+
                 <div className="main-content">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/todos" element={<Todos />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/users" element={<Users />} />
+                        <Route path="/users/:id" element={<DetailUser />} /> {/* Đường dẫn động */}
                     </Routes>
                 </div>
                 {/* // toastity */}
@@ -46,4 +49,4 @@ function App() {
 }
 
 
-export default App
+export default App;

@@ -11,7 +11,7 @@ const Sidebar = () => {
             <div className="sidebar">
                
                 <div className="theme-toggle" onClick={toggleTheme} title="Toggle Theme">
-                    {theme === "light" ? "💡" : "🌙"}
+                    {theme === "light" ? "🌙" : "💡"}
                 </div>
                 <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>
                 <NavLink to="/todos" className={({ isActive }) => isActive ? "active" : ""}>Todos</NavLink>

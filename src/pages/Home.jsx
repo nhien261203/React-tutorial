@@ -39,7 +39,7 @@ const Home = () => {
             <div>
                 <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
                     {users.map((user) => (
-                        <li key={user.id}>
+                        <li key={user.id} style={{padding: 6 }}>
                             {user.id}
                             {user.name}
                             <button style={{ marginLeft: "10px" }} onClick={() => handleDelete(user.id)}>Xóa</button>

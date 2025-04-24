@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addJob, deleteJob } from "../redux/actions";
+import { toast } from "react-toastify";
 
 const About = () => {
     const [title, setTitle] = useState("");
@@ -13,7 +14,7 @@ const About = () => {
 
     const handleSubmit = useCallback(() => {
         if (!title || !salary) {
-            alert("vui long nhap du thong tin");
+            toast.error('Vui long nhap day du thong tin');
             return;
         }
 
@@ -26,6 +27,8 @@ const About = () => {
         dispatch(addJob(newJob));
         setTitle("");
         setSalary("");
+
+        toast.success('them job thanh cong')
     }, [title, salary, dispatch])
 
     const handleDelete = (jobId) => {
@@ -64,9 +67,9 @@ const About = () => {
                 )}
             </div>
             {showList && (
-                <ul style={{ listStyleType: "none", padding: 0 }}>
+                <ul style={{ listStyleType: "none", padding:0 }}>
                     {jobList.map((job) => (
-                        <li key={job.id}>
+                        <li key={job.id} style={{padding: 6 }}>
                             <strong>{job.title}</strong> {job.salary} USD
                             <button
                                 onClick={() => handleDelete(job.id)}

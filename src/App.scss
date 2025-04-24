@@ -52,11 +52,13 @@
 }
 
 .app-container.light {
-  background: #fff;
-  color: #000;
+  background: #333;
+  color: white;
+
 }
 
 .app-container.dark {
-  background: #333;
-  color: white;
+ 
+  background: #fff;
+  color: #000;
 }
