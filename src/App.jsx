@@ -7,7 +7,7 @@ import Sidebar from './components/Sidebar/Sidebar.jsx'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
-import Todos from "./pages/Todos.jsx";
+import Todos from "./pages/Todos/Todos.jsx";
 import Users from "./pages/Users/Users.jsx";
 import DetailUser from './pages/Users/DetailUser.jsx';
 
