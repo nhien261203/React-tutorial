@@ -1,4 +1,5 @@
-import { ADD_TODO } from "../actions";
+import { ADD_TODO, SET_SEARCH_FILTER } from "../actions";
+
 const initialState = {
     filters: {
         search: '',
@@ -13,21 +14,20 @@ const initialState = {
 }
 export const todoReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'ADD_TODO':
+        case ADD_TODO :
             return {
                 ...state,
                 todos: [...state.todos, action.payload]
             };
 
-        // case 'SET_SEARCH_FILTER':
-        //     return {
-        //         ...state,
-        //         filters: {
-        //             ...state.filters,
-        //             search: action.payload,
-        //         }
-        //     };
-
+        case SET_SEARCH_FILTER:
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    search: action.payload, // update search filter
+                }
+            };
         default:
             return state;
     }

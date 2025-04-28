@@ -14,7 +14,7 @@ export const DELETE_JOB = 'DELETE_JOB';
 
 //trang Todo
 export const ADD_TODO = 'ADD_TODO';
-// export const SET_SEARCH_FILTER = 'SET_SEARCH_FILTER';
+export const SET_SEARCH_FILTER = 'SET_SEARCH_FILTER';
 
 // trang Home
 export const addUser = (user) => ({
@@ -29,22 +29,24 @@ export const deleteUser = (userId) => ({
 
 //trang about 
 export const addJob = (job) => ({
-    type:ADD_JOB,
-    payload:job,
+    type: ADD_JOB,
+    payload: job,
 })
 
 export const deleteJob = (jobId) => ({
     type: DELETE_JOB,
-    payload:jobId,
+    payload: jobId,
 })
 
 // trang todo
 export const addTodo = (todo) => ({
-    type:ADD_TODO,
-    payload:todo,
+    type: ADD_TODO,
+    payload: todo,
 })
+export const setSearchFilter = (searchText) => ({
+    type: SET_SEARCH_FILTER,
+    payload: searchText,
+});
 
-// export const setSearchFilter = (search) =>({
-//     type:SET_SEARCH_FILTER,
-//     payload:search
-// })
+
+

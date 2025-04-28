@@ -11,6 +11,13 @@ function TodoLists() {
 
     const dispatch = useDispatch();
     const todoList = useSelector((state) => state.todo.todos);
+    // const search = useSelector((state) => state.todo.filters.search); // Get search filter from Redux state
+
+    // // Filter todos based on search filter
+    // const filteredTodos = todos.filter((todo) =>
+    //   todo.name.toLowerCase().includes(search.toLowerCase())
+    // );
+    
 
     const handleAdd = useCallback(() => {
         if (!name || !priority) {
@@ -24,9 +31,9 @@ function TodoLists() {
             priority,
         };
 
-        dispatch(addTodo(newTodo));  // Dispatch the addTodo action to add a new task
-        setName("");  // Clear the input field
-        setPriority("Medium");  // Reset priority to "Medium"
+        dispatch(addTodo(newTodo));  
+        setName("");  
+        setPriority("Medium");
 
         toast.success('Them job thanh cong');
     }, [name, priority, dispatch]);
