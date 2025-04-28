@@ -6,9 +6,9 @@ const initialState = {
         priority: [],
     },
     todos: [
-        { id: 1, name: 'job A', completed: false, priority: 'Medium' },
-        { id: 2, name: 'job B', completed: false, priority: 'High' },
-        { id: 3, name: 'job C', completed: true, priority: 'Low' },
+        { id: 1, name: 'Learn JavaScript', completed: false, priority: 'Medium' },
+        { id: 2, name: 'Learn Redux', completed: false, priority: 'High' },
+        { id: 3, name: 'Learn C', completed: true, priority: 'Low' },
     ]
 }
 export const todoReducer = (state = initialState, action) => {
@@ -18,6 +18,15 @@ export const todoReducer = (state = initialState, action) => {
                 ...state,
                 todos: [...state.todos, action.payload]
             };
+
+        // case 'SET_SEARCH_FILTER':
+        //     return {
+        //         ...state,
+        //         filters: {
+        //             ...state.filters,
+        //             search: action.payload,
+        //         }
+        //     };
 
         default:
             return state;

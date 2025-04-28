@@ -14,6 +14,7 @@ export const DELETE_JOB = 'DELETE_JOB';
 
 //trang Todo
 export const ADD_TODO = 'ADD_TODO';
+// export const SET_SEARCH_FILTER = 'SET_SEARCH_FILTER';
 
 // trang Home
 export const addUser = (user) => ({
@@ -42,3 +43,8 @@ export const addTodo = (todo) => ({
     type:ADD_TODO,
     payload:todo,
 })
+
+// export const setSearchFilter = (search) =>({
+//     type:SET_SEARCH_FILTER,
+//     payload:search
+// })
