@@ -8,16 +8,32 @@ const DetailUser = () => {
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
 
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         try {
+    //             const response = await axios.get(`https://reqres.in/api/users/${id}`);
+    //             setUser(response.data.data);
+    //         } catch (err) {
+    //             setError("Failed to fetch user details.");
+    //         }
+    //     };
+    //     fetchUser();
+    // }, [id]);
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchUsers = async () => {
             try {
-                const response = await axios.get(`https://reqres.in/api/users/${id}`);
+                const response = await axios.get(`https://reqres.in/api/users/${id}`, {
+                    headers: {
+                        'x-api-key': 'reqres-free-v1'
+                    }
+                });
                 setUser(response.data.data);
             } catch (err) {
-                setError("Failed to fetch user details.");
+                console.error('Error fetching users:', err);
+                setError('Failed to fetch users.');
             }
         };
-        fetchUser();
+        fetchUsers();
     }, [id]);
 
     if (error) {

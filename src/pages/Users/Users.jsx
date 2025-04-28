@@ -12,15 +12,20 @@ const Users = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get(`https://reqres.in/api/users`);
-                setUsers(response.data.data)
-
+                const response = await axios.get('https://reqres.in/api/users', {
+                    headers: {
+                        'x-api-key': 'reqres-free-v1'
+                    }
+                });
+                setUsers(response.data.data);
             } catch (err) {
+                console.error('Error fetching users:', err);
                 setError('Failed to fetch users.');
             }
         };
         fetchUsers();
     }, []);
+    
 
     const handleClickUser = (id) => {
         navigate(`/users/${id}`);
