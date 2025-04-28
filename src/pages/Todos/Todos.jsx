@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import '../Todos/Style1.scss'
 import { Typography, Divider } from 'antd';
 import Filters from '../Todos/Filters.jsx';
 import TodoLists from '../Todos/TodoLists.jsx'
 
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo } from "../../redux/actions.js";
+import { toast } from "react-toastify";
+
 const { Title } = Typography;
 
 const Todos = () => {
+
+
     return (
         <>
             <div

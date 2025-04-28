@@ -1,8 +1,11 @@
 import React from 'react'
 import { Col, Row, Input, Button, Select, Tag } from 'antd';
-import Checks from '../Todos/Checks.jsx'
+import Checks from '../Todos/Checks.jsx';
+
 
 function TodoLists() {
+    
+
     return (
         <>
             <Row style={{ height: 'calc(100% - 40px)' }}>
@@ -13,7 +16,12 @@ function TodoLists() {
                 </Col>
                 <Col span={24}>
                     <Input.Group style={{ display: 'flex' }} compact>
-                        <Input />
+                        <Input
+                            placeholder='Nhap ten todo'
+                            type='text'
+                            
+                        />
+
                         <Select defaultValue="Medium">
                             <Select.Option value='High' label='High'>
                                 <Tag color='red'>High</Tag>

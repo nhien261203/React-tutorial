@@ -12,6 +12,9 @@ export const DELETE_USER = 'DELETE_USER';
 export const ADD_JOB = 'ADD_JOB';
 export const DELETE_JOB = 'DELETE_JOB';
 
+//trang Todo
+export const ADD_TODO = 'ADD_TODO';
+
 // trang Home
 export const addUser = (user) => ({
     type: ADD_USER,
@@ -34,5 +37,8 @@ export const deleteJob = (jobId) => ({
     payload:jobId,
 })
 
-//  https://github.com/hqteamobi/reactjs_profile_ui
-
+// trang todo
+export const addTodo = (todo) => ({
+    type:ADD_TODO,
+    payload:todo,
+})
