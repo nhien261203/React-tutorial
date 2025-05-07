@@ -10,15 +10,30 @@ function TodoLists() {
     const [priority, setPriority] = useState("Medium");  // To store the task priority
 
     const dispatch = useDispatch();
+
+    const status = useSelector((state) => state.todo.filters.status);
+    const priorities = useSelector((state) => state.todo.filters.priority);
+
     // const todoList = useSelector((state) => state.todo.todos);
     // const search = useSelector((state) => state.todo.filters.search); // Get search filter from Redux state
-    const todos = useSelector((state) => state.todo.todos); 
-    const search = useSelector((state) => state.todo.filters.search); 
+    const todos = useSelector((state) => state.todo.todos);
+    const search = useSelector((state) => state.todo.filters.search);
     // // Filter todos based on search filter
-    const filteredTodos = todos.filter((todo) =>
-      todo.name.toLowerCase().includes(search.toLowerCase())
-    );
-    
+    const filteredTodos = todos.filter((todo) => {
+        const matchesSearch = todo.name.toLowerCase().includes(search.toLowerCase());
+
+        const matchesStatus =
+            status === 'All' ||
+            (status === 'Completed' && todo.completed) ||
+            (status === 'Todo' && !todo.completed);
+
+        const matchesPriority =
+            priorities.length === 0 || priorities.includes(todo.priority);
+
+        return matchesSearch && matchesStatus && matchesPriority;
+    });
+
+
 
     const handleAdd = useCallback(() => {
         if (!name || !priority) {
@@ -32,8 +47,8 @@ function TodoLists() {
             priority,
         };
 
-        dispatch(addTodo(newTodo));  
-        setName("");  
+        dispatch(addTodo(newTodo));
+        setName("");
         setPriority("Medium");
 
         toast.success('Them job thanh cong');

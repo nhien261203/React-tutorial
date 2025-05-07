@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row, Input, Typography, Radio, Select, Tag } from 'antd';
-import { setSearchFilter } from '../../redux/actions';
+import { setSearchFilter, setStatusFilter, setPriorityFilter } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 const { Search } = Input;
 
@@ -12,6 +12,16 @@ function Filters() {
     const searchText = e.target.value;
     dispatch(setSearchFilter(searchText)); // Dispatch action to update search filter
   };
+
+  const handleStatusChange = (e) => {
+    dispatch(setStatusFilter(e.target.value));
+  };
+
+  const handlePriorityChange = (values) => {
+    dispatch(setPriorityFilter(values));
+  };
+  
+  
 
   return (
     <>
@@ -34,7 +44,7 @@ function Filters() {
           >
             Filter By Status
           </Typography.Paragraph>
-          <Radio.Group>
+          <Radio.Group onChange={handleStatusChange}>
             <Radio value='All'>All</Radio>
             <Radio value='Completed'>Completed</Radio>
             <Radio value='Todo'>To do</Radio>
@@ -49,8 +59,10 @@ function Filters() {
           <Select
             mode='multiple'
             allowClear
+            onChange={handlePriorityChange}
             placeholder='Please select'
             style={{ width: '100%' }}
+
           >
             <Select.Option value='High' label='High'>
               <Tag color='red'>High</Tag>

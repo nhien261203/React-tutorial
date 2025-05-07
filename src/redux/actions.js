@@ -16,6 +16,9 @@ export const DELETE_JOB = 'DELETE_JOB';
 export const ADD_TODO = 'ADD_TODO';
 export const SET_SEARCH_FILTER = 'SET_SEARCH_FILTER';
 
+export const SET_STATUS_FILTER = 'SET_STATUS_FILTER';
+export const SET_PRIORITY_FILTER = 'SET_PRIORITY_FILTER';
+
 // trang Home
 export const addUser = (user) => ({
     type: ADD_USER,
@@ -47,6 +50,17 @@ export const setSearchFilter = (searchText) => ({
     type: SET_SEARCH_FILTER,
     payload: searchText,
 });
+
+export const setStatusFilter = (status) => ({
+    type: SET_STATUS_FILTER,
+    payload: status,
+});
+
+export const setPriorityFilter = (priorities) => ({
+    type: SET_PRIORITY_FILTER,
+    payload: priorities,
+});
+
 
 
 
