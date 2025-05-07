@@ -10,13 +10,14 @@ function TodoLists() {
     const [priority, setPriority] = useState("Medium");  // To store the task priority
 
     const dispatch = useDispatch();
-    const todoList = useSelector((state) => state.todo.todos);
+    // const todoList = useSelector((state) => state.todo.todos);
     // const search = useSelector((state) => state.todo.filters.search); // Get search filter from Redux state
-
+    const todos = useSelector((state) => state.todo.todos); 
+    const search = useSelector((state) => state.todo.filters.search); 
     // // Filter todos based on search filter
-    // const filteredTodos = todos.filter((todo) =>
-    //   todo.name.toLowerCase().includes(search.toLowerCase())
-    // );
+    const filteredTodos = todos.filter((todo) =>
+      todo.name.toLowerCase().includes(search.toLowerCase())
+    );
     
 
     const handleAdd = useCallback(() => {
@@ -43,8 +44,8 @@ function TodoLists() {
             <Row style={{ height: 'calc(100% - 40px)' }}>
                 <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
                     {/* Render dynamically the todo list from Redux */}
-                    {todoList.map(todo => (
-                        <Checks key={todo.id} name={todo.name} prioriry={todo.priority} />
+                    {filteredTodos.map(todo => (
+                        <Checks key={todo.id} name={todo.name} priority={todo.priority} />
                     ))}
                 </Col>
                 <Col span={24}>

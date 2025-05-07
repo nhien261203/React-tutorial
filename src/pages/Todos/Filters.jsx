@@ -24,6 +24,8 @@ function Filters() {
           </Typography.Paragraph>
           <Search placeholder='input search text'
             onChange={handleSearchChange}
+            enterButton="Search"
+            allowClear
           />
         </Col>
         <Col sm={24}>

@@ -28,6 +28,7 @@ export const todoReducer = (state = initialState, action) => {
                     search: action.payload, // update search filter
                 }
             };
+       
         default:
             return state;
     }

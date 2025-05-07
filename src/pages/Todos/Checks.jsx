@@ -8,7 +8,7 @@ const priorityColorMapping = {
     Low: 'gray',
 };
 
-function Checks({ name, prioriry }) {
+function Checks({ name, priority }) {
     const [checked, setChecked] = useState(false);
 
     const toggleCheckbox = () => {
@@ -27,8 +27,8 @@ function Checks({ name, prioriry }) {
                 <Checkbox checked={checked} onChange={toggleCheckbox}>
                     {name}
                 </Checkbox>
-                <Tag color={priorityColorMapping[prioriry]} style={{ margin: 0 }}>
-                    {prioriry}
+                <Tag color={priorityColorMapping[priority]} style={{ margin: 0 }}>
+                    {priority}
                 </Tag>
             </Row>
         </>
